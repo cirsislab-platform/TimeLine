@@ -3,6 +3,8 @@ import type {
 	TimeLineDataPoint,
 	TimeLineSavedDataPoint,
 	TimeLinePlugin,
+	TimeLineDataPointTime,
+	TimeLineDataPointValue,
 } from "./types";
 import { isPointInBox } from "./utils";
 
@@ -13,6 +15,14 @@ interface TimeLineSides {
 	bottom: number;
 }
 
+type TimeLineReferenceLine = {
+	type: "vertical";
+	time: TimeLineDataPointTime;
+} & {
+	type: "horizontal";
+	value: TimeLineDataPointValue;
+};
+
 export interface TimeLineOptions {
 	container: HTMLElement;
 	data: TimeLineDataPoint[];
@@ -22,6 +32,7 @@ export interface TimeLineOptions {
 	lineWidth?: number;
 	padding?: Partial<TimeLineSides>;
 	plugins?: (TimeLinePlugin | null | undefined | false)[];
+	referenceLines?: TimeLineReferenceLine[];
 }
 
 export interface TimeLineHelpfulInfo {

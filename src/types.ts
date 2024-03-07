@@ -1,8 +1,11 @@
-import type { TimeLine } from "./TimeLine";
+import { TimeLine } from "./TimeLine";
+
+export type TimeLineDataPointTime = number | Date;
+export type TimeLineDataPointValue = number;
 
 export interface TimeLineDataPoint {
-	time: number | Date;
-	value: number;
+	time: TimeLineDataPointTime;
+	value: TimeLineDataPointValue;
 }
 
 export interface TimeLineSavedDataPoint {
